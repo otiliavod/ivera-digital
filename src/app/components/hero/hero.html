@@ -1,0 +1,45 @@
+<section class="hero">
+  <div class="hero__bg"></div>
+
+  <div class="hero__container">
+    <div class="hero__badge">
+      <i class="pi pi-sparkles"></i>
+      <span>{{ hero.eyebrow }}</span>
+    </div>
+
+    <h1 class="hero__title">
+  <span class="hero__line">
+    {{ hero.title }}
+  </span>
+
+      <span class="hero__line">
+    <span class="hero__accent">{{ hero.titleAccent }}</span>
+    <span class="hero__rest"> That Matter</span>
+  </span>
+    </h1>
+
+    <p class="hero__subtitle">
+      {{ hero.subtitle }}
+    </p>
+
+    <div class="hero__actions">
+      <a
+        pButton
+        class="hero__primary"
+        [routerLink]="['/', hero.primaryCtaTarget]"
+        label="{{ hero.primaryCtaLabel }}"
+        icon="pi pi-arrow-right"
+        iconPos="right"
+      ></a>
+
+      <a
+        pButton
+        class="hero__secondary"
+        [routerLink]="['/', hero.secondaryCtaTarget]"
+        label="{{ hero.secondaryCtaLabel }}"
+        severity="secondary"
+        outlined="true"
+      ></a>
+    </div>
+  </div>
+</section>

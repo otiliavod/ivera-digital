@@ -1,0 +1,53 @@
+<header class="nav" [class.is-scrolled]="scrolled">
+  <div class="nav__container">
+    <a class="nav__brand" routerLink="/">
+      <img class="nav__logoDesktop" [src]="logoWordmarkPath" alt="Ivera Digital" />
+      <img class="nav__logoMobile" [src]="logoMarkPath" alt="Ivera Digital" />
+    </a>
+
+    <nav class="nav__links">
+      @for (item of navItems; track item.path) {
+        <a
+          class="nav__link"
+          [routerLink]="item.path ? ['/', item.path] : ['/']"
+          routerLinkActive="is-active"
+          [routerLinkActiveOptions]="{ exact: item.path === '' }"
+        >
+          {{ item.label }}
+        </a>
+      }
+    </nav>
+
+    <div class="nav__actions">
+      <a pButton class="nav__cta" label="Get Started" [routerLink]="['/contact']"></a>
+
+      <button
+        pButton
+        class="nav__menuBtn"
+        type="button"
+        icon="pi pi-bars"
+        severity="secondary"
+        outlined="true"
+        (click)="openMobileMenu($event)"
+        aria-label="Open menu"
+      ></button>
+    </div>
+  </div>
+
+  <p-popover #mobileMenu styleClass="navPopover" [dismissable]="true">
+    <div class="navPopover__content">
+      @for (item of navItems; track item.path) {
+        <button type="button" class="navPopover__item" (click)="navigate(item.path)">
+          {{ item.label }}
+        </button>
+      }
+
+      <div class="navPopover__divider"></div>
+
+      <button type="button" class="navPopover__primary" (click)="navigate('contact')">
+        Get Started
+        <i class="pi pi-arrow-right"></i>
+      </button>
+    </div>
+  </p-popover>
+</header>
