@@ -1,27 +1,40 @@
+/* =========================
+   NAV BAR
+========================= */
+
 .nav {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 50;
+
   background: transparent;
   border-bottom: 1px solid transparent;
   backdrop-filter: none;
   box-shadow: none;
 
-  transition: background 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+  transition:
+    background 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease,
+    backdrop-filter 220ms ease;
 }
 
 .nav.is-scrolled {
-  background: rgba(255, 255, 255, 0.86);
-  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(14px);
   border-bottom-color: rgba(0, 0, 0, 0.06);
-  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
 }
 
 .nav__container {
   max-width: 1100px;
   margin: 0 auto;
   padding: 14px 20px;
-  display: flex;
+
+  display: grid;
+  grid-template-columns: auto 1fr auto;
   align-items: center;
   gap: 18px;
 }
@@ -44,32 +57,67 @@
   display: none;
 }
 
+/* =========================
+   LINKS
+========================= */
+
 .nav__links {
   margin-left: auto;
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 24px;
 }
 
 .nav__link {
-  color: rgba(0, 0, 0, 0.68);
-  text-decoration: none;
-  font-size: 14px;
+  font-size: 17px;
   font-weight: 600;
-  padding: 8px 10px;
-  border-radius: 10px;
-  transition: background 160ms ease, color 160ms ease;
+  padding: 8px 6px;
+
+  color: rgba(0, 0, 0, 0.74);
+  text-decoration: none !important;
+
+  transition: color 160ms ease, opacity 160ms ease;
 }
 
-.nav .nav__link:hover {
-  background: rgba(125, 83, 233, 0.14);
-  color: #1e1e1e;
+/* Ensure the browser never adds underline */
+.nav__link,
+.nav__link:visited,
+.nav__link:focus,
+.nav__link:hover {
+  text-decoration: none !important;
 }
 
-.nav .nav__link.is-active {
-  color: #1e1e1e;
-  background: rgba(125, 83, 233, 0.18);
+.nav__link:hover {
+  color: #7d53e9;
 }
+
+.nav__link.is-active {
+  color: rgba(0, 0, 0, 0.74);
+}
+
+.nav__link.is-active:hover {
+  color: #7d53e9;
+}
+
+.nav.is-scrolled .nav__link.is-active:hover {
+  color: #7d53e9;
+}
+
+.nav.is-scrolled .nav__link {
+  color: rgba(0, 0, 0, 0.76);
+}
+
+.nav.is-scrolled .nav__link:hover {
+  color: #7d53e9;
+}
+
+.nav.is-scrolled .nav__link.is-active {
+  color: rgba(0, 0, 0, 0.76);
+}
+
+/* =========================
+   ACTIONS
+========================= */
 
 .nav__actions {
   display: flex;
@@ -77,67 +125,86 @@
   gap: 10px;
 }
 
-.nav__cta {
-  :host ::ng-deep &.p-button {
-    background: #7d53e9;
-    border-color: #7d53e9;
-    border-radius: 12px;
-    font-weight: 800;
-    padding: 10px 14px;
+/* CTA button */
+:host ::ng-deep a.nav__cta.p-button {
+  text-decoration: none !important;
 
-    box-shadow: 0 10px 26px rgba(125, 83, 233, 0.18);
-    transition: all 220ms ease;
-  }
+  background: #7d53e9;
+  border-color: #7d53e9;
+  border-radius: 12px;
+  font-weight: 800;
+  padding: 10px 14px;
 
-  :host ::ng-deep &.p-button:hover {
-    background: #8f6af0;
-    border-color: #8f6af0;
-    transform: translateY(-2px) scale(1.04);
-    box-shadow: 0 14px 30px rgba(125, 83, 233, 0.28);
-  }
+  color: #ffffff; /* make it true white */
+  box-shadow: 0 10px 26px rgba(125, 83, 233, 0.18);
+
+  transition: transform 220ms ease, background 220ms ease, box-shadow 220ms ease;
 }
 
+:host ::ng-deep a.nav__cta.p-button .p-button-label {
+  color: #ffffff; /* force label white */
+}
+
+:host ::ng-deep a.nav__cta.p-button:hover {
+  background: #8f6af0;
+  border-color: #8f6af0;
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 14px 30px rgba(125, 83, 233, 0.28);
+}
+
+/* menu button */
 .nav__menuBtn {
   display: none;
-
-  :host ::ng-deep &.p-button {
-    border-radius: 12px;
-  }
 }
 
-/* Mobile dropdown popover styling */
+:host ::ng-deep button.nav__menuBtn.p-button {
+  border-radius: 12px;
+}
+
+/* =========================
+   MOBILE POPOVER (overlay)
+========================= */
+
 :host ::ng-deep .navPopover.p-popover {
   border-radius: 16px;
   overflow: hidden;
 }
 
-.navPopover__content {
+:host ::ng-deep .navPopover__content {
   width: min(320px, 78vw);
   padding: 10px;
+
   display: flex;
   flex-direction: column;
   gap: 6px;
 }
 
-.navPopover__item {
+:host ::ng-deep .navPopover__item {
   width: 100%;
   text-align: left;
-  border: 0;
+
+  border: 1px solid transparent; /* prevents layout shift */
   background: transparent;
-  padding: 10px 10px 10px 12px; /* a bit of room for the accent bar */
+
+  padding: 10px 10px 10px 12px; /* room for accent bar */
   border-radius: 12px;
+
   font-weight: 700;
   color: rgba(0, 0, 0, 0.72);
+
   cursor: pointer;
   position: relative;
+
+  transition: background 160ms ease, color 160ms ease, border-color 160ms ease;
 }
 
-.nav .navPopover__item:hover {
+:host ::ng-deep .navPopover__item:hover {
   background: rgba(125, 83, 233, 0.14);
+  border-color: rgba(125, 83, 233, 0.28);
   color: #1e1e1e;
 }
 
-.nav .navPopover__item:hover::before {
+:host ::ng-deep .navPopover__item:hover::before {
   content: '';
   position: absolute;
   left: 6px;
@@ -148,40 +215,47 @@
   background: #7d53e9;
 }
 
-.navPopover__divider {
+:host ::ng-deep .navPopover__divider {
   height: 1px;
   background: rgba(0, 0, 0, 0.08);
   margin: 6px 0;
 }
 
-.navPopover__primary {
+:host ::ng-deep .navPopover__primary {
   width: 100%;
   border: 0;
   border-radius: 12px;
   padding: 10px 12px;
+
   background: #7d53e9;
   color: #fff;
+
   font-weight: 800;
   cursor: pointer;
+
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
+
   transition: all 220ms ease;
 }
 
-.navPopover__primary:hover {
+:host ::ng-deep .navPopover__primary:hover {
   background: #8f6af0;
   transform: translateY(-2px) scale(1.02);
 }
 
-/* Breakpoint: 960px */
+/* =========================
+   BREAKPOINT: 960px
+========================= */
+
 @media (max-width: 960px) {
   .nav__links {
     display: none;
   }
 
-  .nav__cta {
+  :host ::ng-deep a.nav__cta.p-button {
     display: none;
   }
 

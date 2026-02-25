@@ -19,7 +19,13 @@
     </nav>
 
     <div class="nav__actions">
-      <a pButton class="nav__cta" label="Get Started" [routerLink]="['/contact']"></a>
+      <a
+        pButton
+        class="nav__cta"
+        [routerLink]="['/contact']"
+      >
+        Get Started
+      </a>
 
       <button
         pButton
@@ -27,7 +33,7 @@
         type="button"
         icon="pi pi-bars"
         severity="secondary"
-        outlined="true"
+        [outlined]="true"
         (click)="openMobileMenu($event)"
         aria-label="Open menu"
       ></button>

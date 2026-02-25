@@ -1,6 +1,7 @@
 .hero {
   position: relative;
   min-height: 100vh;
+  height: 100vh;
   width: 100%;
   padding: 88px 20px 72px;
   overflow: hidden;
@@ -33,12 +34,11 @@
   content: '';
   position: absolute;
   inset: 0;
-  background:
-    linear-gradient(
-        180deg,
-        rgba(255, 255, 255, 0.78),
-        rgba(255, 255, 255, 0.62)
-    );
+  background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.62),
+      rgba(255, 255, 255, 0.48)
+  );
   pointer-events: none;
 }
 

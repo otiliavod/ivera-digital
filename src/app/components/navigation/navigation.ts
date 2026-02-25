@@ -1,5 +1,6 @@
 import {
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   HostListener,
   inject,
@@ -7,7 +8,7 @@ import {
 } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
-import { Popover } from 'primeng/popover';
+import { Popover, PopoverModule } from 'primeng/popover';
 
 import { SiteContentService } from '../../data/site-content.service';
 import { NavItem } from '../../data/site-content.models';
@@ -15,14 +16,15 @@ import { NavItem } from '../../data/site-content.models';
 @Component({
   selector: 'app-navigation',
   standalone: true,
-  imports: [RouterModule, ButtonModule, Popover],
+  imports: [RouterModule, ButtonModule, PopoverModule],
   templateUrl: './navigation.html',
-  styleUrl: './navigation.scss',
+  styleUrls: ['./navigation.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Navigation {
   private readonly content = inject(SiteContentService);
   private readonly router = inject(Router);
+  private readonly cdr = inject(ChangeDetectorRef);
 
   navItems: NavItem[] = this.content.getNavItems();
 
@@ -35,7 +37,11 @@ export class Navigation {
 
   @HostListener('window:scroll')
   onScroll(): void {
-    this.scrolled = window.scrollY > 8; // threshold
+    const next = window.scrollY > 8;
+    if (next !== this.scrolled) {
+      this.scrolled = next;
+      this.cdr.markForCheck();
+    }
   }
 
   async navigate(path: NavItem['path']): Promise<void> {

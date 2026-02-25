@@ -1,5 +1,15 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100%;
+}
+
 :root {
   --primary-color: #7d53e9;
   --primary-color-text: #ffffff;
+  --nav-height: 72px;
 }
-
