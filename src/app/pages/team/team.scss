@@ -1,5 +1,184 @@
-.page {
+.team {
+  padding: 64px 20px;
+  background: #ffffff;
+}
+
+.team__container {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 56px 20px;
+}
+
+.team__header {
+  text-align: center;
+  margin-bottom: 34px;
+}
+
+.team__title {
+  margin: 0;
+  font-size: clamp(34px, 4.4vw, 52px);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: #151515;
+}
+
+.team__accent {
+  color: #7d53e9;
+}
+
+.team__subtitle {
+  margin: 12px auto 0;
+  max-width: 720px;
+  color: rgba(0, 0, 0, 0.62);
+  line-height: 1.6;
+  font-size: 18px;
+}
+
+.team__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 360px);
+  justify-content: center;
+}
+
+/* --- Card --- */
+.teamCard {
+  :host ::ng-deep &.p-card {
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.06);
+
+    transition:
+      transform 200ms ease,
+      box-shadow 200ms ease,
+      border-color 200ms ease;
+  }
+
+  :host ::ng-deep &.p-card:hover {
+    transform: translateY(-4px);
+    border-color: #8f6af0;
+    box-shadow:
+      0 0 0 1px rgba(143, 106, 240, 0.25),
+      0 18px 38px rgba(0, 0, 0, 0.12);
+  }
+
+  :host ::ng-deep .p-card-body {
+    padding: 0;
+  }
+}
+
+.teamCard__inner {
+  padding: 22px 20px 18px;
+  text-align: center;
+}
+
+.teamCard__avatarWrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 6px;
+  margin-bottom: 14px;
+}
+
+.teamCard__avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 999px;
+  object-fit: cover;
+  border: 3px solid rgba(125, 83, 233, 0.22);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+}
+
+.teamCard__name {
+  margin: 0;
+  font-size: 22px;
+  letter-spacing: -0.01em;
+  color: #121212;
+}
+
+.teamCard__role {
+  margin: 6px 0 0;
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.58);
+}
+
+.teamCard__highlights {
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 10px;
+  text-align: left;
+}
+
+.teamCard__highlights li {
+  display: grid;
+  grid-template-columns: 16px 1fr;
+  gap: 10px;
+  align-items: start;
+  color: rgba(0, 0, 0, 0.68);
+  font-size: 15.5px;
+  line-height: 1.45;
+
+  i {
+    color: #7d53e9;
+    margin-top: 2px;
+    font-size: 13px;
+  }
+}
+
+.teamCard__skills {
+  margin-top: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+
+  :host ::ng-deep .p-chip {
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.10);
+    border-radius: 999px;
+    font-weight: 600;
+  }
+}
+
+.teamCard__divider {
+  height: 1px;
+  background: rgba(0, 0, 0, 0.08);
+  margin: 16px 0 12px;
+}
+
+.teamCard__social {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.teamCard__iconBtn {
+  :host ::ng-deep &.p-button {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.10);
+    color: rgba(0, 0, 0, 0.72);
+
+    transition: all 180ms ease;
+  }
+
+  :host ::ng-deep &.p-button:hover {
+    background: rgba(125, 83, 233, 0.10);
+    border-color: rgba(125, 83, 233, 0.28);
+    color: #7d53e9;
+    transform: translateY(-1px);
+  }
+}
+
+@media (max-width: 700px) {
+  .team {
+    padding: 54px 16px;
+  }
+
+  .team__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }

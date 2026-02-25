@@ -1,4 +1,4 @@
-import { HeroContent, NavItem, ProjectsSectionContent } from './site-content.models';
+import { HeroContent, NavItem, ProjectsSectionContent, TeamSectionContent } from './site-content.models';
 
 export const NAV_ITEMS: NavItem[] = [
   { label: 'Home', path: '' },
@@ -46,6 +46,31 @@ export const PROJECTS_SECTION: ProjectsSectionContent = {
       tech: ['Angular 21', 'SCSS', 'PrimeIcons', 'Node.js'],
       imagePath: 'assets/project-2.png',
       liveUrl: 'https://cityhall-presentation.netlify.app/',
+    },
+  ],
+};
+
+export const TEAM_SECTION: TeamSectionContent = {
+  title: 'Meet',
+  titleAccent: 'Your Team',
+  subtitle:
+    'A one-person team for now — focused on clean UI, scalable architecture, and modern Angular patterns.',
+  members: [
+    {
+      id: 'otilia',
+      name: 'Otilia Ivănoiu',
+      role: 'Full Stack Developer (Angular • Java)',
+      photoPath: 'assets/team-photo.jpg',
+
+      highlights: [
+        'Web development (frontend + backend)',
+        'Strong focus on clean, reusable UI',
+        'Teamwork, communication, attention to detail',
+      ],
+      skills: ['Angular', 'TypeScript', 'SCSS', 'Java', 'Spring Boot', 'PostgreSQL'],
+
+      githubUrl: 'https://github.com/otiliavod',
+      linkedinUrl: 'https://www.linkedin.com/in/otilia-ivanoiu-18b57a18b/',
     },
   ],
 };

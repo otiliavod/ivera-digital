@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HERO_CONTENT, NAV_ITEMS, PROJECTS_SECTION } from './site-content';
-import { HeroContent, NavItem, ProjectsSectionContent } from './site-content.models';
+import { HERO_CONTENT, NAV_ITEMS, PROJECTS_SECTION, TEAM_SECTION } from './site-content';
+import { HeroContent, NavItem, ProjectsSectionContent, TeamSectionContent } from './site-content.models';
 
 @Injectable({ providedIn: 'root' })
 export class SiteContentService {
@@ -14,5 +14,9 @@ export class SiteContentService {
 
   getProjectsSection(): ProjectsSectionContent {
     return PROJECTS_SECTION;
+  }
+
+  getTeamSection(): TeamSectionContent {
+    return TEAM_SECTION;
   }
 }

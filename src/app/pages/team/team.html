@@ -1,4 +1,65 @@
-<section class="page">
-  <h1>Team</h1>
-  <p>We’ll build the team cards section like your screenshot.</p>
+<section class="team" id="team">
+  <div class="team__container">
+    <header class="team__header">
+      <h2 class="team__title">
+        <span>{{ team.title }}</span>
+        @if (team.titleAccent) {
+          <span class="team__accent"> {{ team.titleAccent }}</span>
+        }
+      </h2>
+      <p class="team__subtitle">{{ team.subtitle }}</p>
+    </header>
+
+    <div class="team__grid">
+      @for (m of team.members; track m.id) {
+        <p-card class="teamCard">
+          <div class="teamCard__inner">
+            <div class="teamCard__avatarWrap">
+              <img class="teamCard__avatar" [src]="m.photoPath" [alt]="m.name" />
+            </div>
+
+            <h3 class="teamCard__name">{{ m.name }}</h3>
+            <p class="teamCard__role">{{ m.role }}</p>
+
+            <ul class="teamCard__highlights">
+              @for (h of m.highlights; track h) {
+                <li>
+                  <i class="pi pi-user"></i>
+                  <span>{{ h }}</span>
+                </li>
+              }
+            </ul>
+
+            <div class="teamCard__skills">
+              @for (s of m.skills; track s) {
+                <p-chip [label]="s"></p-chip>
+              }
+            </div>
+
+            <div class="teamCard__divider"></div>
+
+            <div class="teamCard__social">
+              <button
+                pButton
+                type="button"
+                class="teamCard__iconBtn"
+                icon="pi pi-github"
+                (click)="open(m.githubUrl)"
+                aria-label="GitHub"
+              ></button>
+
+              <button
+                pButton
+                type="button"
+                class="teamCard__iconBtn"
+                icon="pi pi-linkedin"
+                (click)="open(m.linkedinUrl)"
+                aria-label="LinkedIn"
+              ></button>
+            </div>
+          </div>
+        </p-card>
+      }
+    </div>
+  </div>
 </section>

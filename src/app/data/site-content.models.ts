@@ -34,3 +34,23 @@ export interface ProjectsSectionContent {
   subtitle: string;
   items: ProjectItem[];
 }
+
+export interface TeamMember {
+  id: string;
+  name: string;
+  role: string;
+  photoPath: string;
+
+  highlights: string[];
+  skills: string[];
+
+  githubUrl: string;
+  linkedinUrl: string;
+}
+
+export interface TeamSectionContent {
+  title: string;
+  titleAccent?: string;
+  subtitle: string;
+  members: TeamMember[];
+}
