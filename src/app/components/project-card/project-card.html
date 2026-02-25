@@ -1,0 +1,39 @@
+<p-card class="projectCard">
+  <div class="projectCard__media" aria-hidden="true">
+    <img
+      class="projectCard__img"
+      [src]="project.imagePath"
+      [alt]="project.title"
+      loading="lazy"
+    />
+  </div>
+
+  <div class="projectCard__body">
+    <p-tag
+      class="projectCard__tag"
+      [value]="project.category"
+      severity="secondary"
+    ></p-tag>
+
+    <h3 class="projectCard__title">{{ project.title }}</h3>
+    <p class="projectCard__desc">{{ project.description }}</p>
+
+    <div class="projectCard__tech">
+      @for (t of project.tech; track t) {
+        <p-chip [label]="t"></p-chip>
+      }
+    </div>
+
+    <div class="projectCard__actions">
+      <button
+        pButton
+        type="button"
+        class="projectCard__btn"
+        label="View Live"
+        icon="pi pi-arrow-right"
+        iconPos="right"
+        (click)="openLive()"
+      ></button>
+    </div>
+  </div>
+</p-card>

@@ -1,4 +1,20 @@
-<section class="page">
-  <h1>Projects</h1>
-  <p>We’ll add your 2 projects here.</p>
+<section class="projects" id="projects">
+  <div class="projects__container">
+    <header class="projects__header">
+      <h2 class="projects__title">
+        <span>{{ projects.title }}</span>
+        @if (projects.titleAccent) {
+          <span class="projects__accent"> {{ projects.titleAccent }}</span>
+        }
+      </h2>
+
+      <p class="projects__subtitle">{{ projects.subtitle }}</p>
+    </header>
+
+    <div class="projects__grid">
+      @for (p of projects.items; track p.id) {
+        <app-project-card [project]="p"></app-project-card>
+      }
+    </div>
+  </div>
 </section>
