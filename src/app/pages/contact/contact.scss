@@ -1,5 +1,308 @@
-.page {
-  max-width: 1100px;
+.contact {
+  padding: 84px 20px 96px;
+  background: #f3f4f64d;
+}
+
+.contact__container {
+  max-width: 1120px;
   margin: 0 auto;
-  padding: 56px 20px;
+}
+
+.contact__header {
+  text-align: center;
+  margin-bottom: 44px;
+}
+
+.contact__title {
+  margin: 0;
+  font-size: clamp(36px, 4.6vw, 56px);
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  color: #121212;
+}
+
+.contact__accent {
+  color: #7d53e9;
+}
+
+.contact__subtitle {
+  margin: 14px auto 0;
+  max-width: 720px;
+  color: rgba(0, 0, 0, 0.62);
+  line-height: 1.65;
+  font-size: 18px;
+}
+
+.contact__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 34px;
+  align-items: start;
+}
+
+.contact__left {
+  display: grid;
+  gap: 26px;
+}
+
+/* =========================
+   CARD BASE
+========================= */
+
+.contactCard {
+  :host ::ng-deep &.p-card {
+    border-radius: 18px;
+    overflow: hidden;
+    background: #ffffff;
+
+    border: 1px solid rgba(15, 23, 42, 0.10);
+    box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+
+    transition:
+      transform 180ms ease,
+      box-shadow 180ms ease,
+      border-color 180ms ease;
+  }
+
+  :host ::ng-deep &.p-card:hover {
+    border-color: rgba(125, 83, 233, 0.22);
+    box-shadow: 0 16px 36px rgba(15, 23, 42, 0.10);
+  }
+
+  :host ::ng-deep .p-card-body {
+    padding: 28px;
+  }
+}
+
+.contactCard--tight {
+  :host ::ng-deep &.p-card .p-card-body {
+    padding: 36px;
+  }
+  margin: 0 0 18px;
+  font-size: 22px;
+  letter-spacing: -0.02em;
+  color: #111827;
+}
+
+.contactCard__title {
+  margin: 0 0 18px;
+  font-size: 22px;
+  letter-spacing: -0.02em;
+  color: #111827;
+}
+
+.contactFormCard {
+  :host ::ng-deep &.p-card .p-card-body {
+    padding: 36px;
+  }
+}
+
+/* =========================
+   LEFT INFO
+========================= */
+
+.contactInfo {
+  display: grid;
+  gap: 18px;
+}
+
+.contactInfo__row {
+  display: grid;
+  grid-template-columns: 46px 1fr;
+  gap: 14px;
+  align-items: center;
+}
+
+.contactInfo__icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+
+  background: rgba(125, 83, 233, 0.10);
+  border: 1px solid rgba(125, 83, 233, 0.18);
+
+  i {
+    color: #7d53e9;
+    font-size: 18px;
+  }
+}
+
+.contactInfo__label {
+  font-weight: 800;
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.82);
+}
+
+.contactInfo__value {
+  margin-top: 3px;
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.62);
+}
+
+/* =========================
+   WHY LIST
+========================= */
+
+.contactWhy__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 14px;
+}
+
+.contactWhy__list li {
+  display: grid;
+  grid-template-columns: 18px 1fr;
+  gap: 10px;
+  align-items: start;
+
+  color: rgba(0, 0, 0, 0.66);
+  font-size: 16px;
+  line-height: 1.55;
+
+  i {
+    color: #7d53e9;
+    margin-top: 3px;
+    font-size: 14px;
+  }
+}
+
+/* =========================
+   FORM
+========================= */
+
+.contactForm {
+  display: grid;
+  gap: 20px;
+}
+
+.contactForm__field {
+  width: 100%;
+}
+
+/* Inputs + textarea base */
+:host ::ng-deep .contactForm .p-inputtext,
+:host ::ng-deep .contactForm textarea.p-inputtextarea,
+:host ::ng-deep .contactForm textarea.p-textarea {
+  width: 100%;
+
+  border-radius: 12px;
+  padding: 13px 16px;
+  font-size: 14px;
+  line-height: 1.2;
+
+  background: rgba(248, 250, 252, 1);
+  border: 1px solid rgba(15, 23, 42, 0.12);
+
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.75) inset,
+    0 1px 2px rgba(15, 23, 42, 0.04);
+
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    background 180ms ease;
+}
+
+:host ::ng-deep .contactForm input.p-inputtext {
+  height: 46px;
+}
+
+/* placeholder look */
+:host ::ng-deep .contactForm .p-inputtext::placeholder,
+:host ::ng-deep .contactForm textarea::placeholder {
+  color: rgba(15, 23, 42, 0.45);
+}
+
+/* hover */
+:host ::ng-deep .contactForm .p-inputtext:hover,
+:host ::ng-deep .contactForm textarea.p-inputtextarea:hover,
+:host ::ng-deep .contactForm textarea.p-textarea:hover {
+  border-color: rgba(15, 23, 42, 0.18);
+  background: rgba(248, 250, 252, 0.9);
+}
+
+/* focus */
+:host ::ng-deep .contactForm .p-inputtext:focus,
+:host ::ng-deep .contactForm textarea.p-inputtextarea:focus,
+:host ::ng-deep .contactForm textarea.p-textarea:focus {
+  outline: none;
+  background: #ffffff;
+  border-color: rgba(125, 83, 233, 0.55);
+  box-shadow:
+    0 0 0 4px rgba(125, 83, 233, 0.14),
+    0 1px 2px rgba(15, 23, 42, 0.06);
+}
+
+:host ::ng-deep .contactForm textarea.p-inputtextarea,
+:host ::ng-deep .contactForm textarea.p-textarea {
+  min-height: 170px;
+  resize: none;
+}
+
+.contactForm__submit {
+  :host ::ng-deep &.p-button {
+    height: 48px;
+    width: 100%;
+    border-radius: 12px;
+
+    background: #6b4ce6;
+    border: 1px solid #6b4ce6;
+
+    font-weight: 800;
+    letter-spacing: 0.01em;
+
+    box-shadow: 0 10px 22px rgba(107, 76, 230, 0.18);
+    transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+  }
+
+  :host ::ng-deep &.p-button .p-button-label,
+  :host ::ng-deep &.p-button .p-button-icon {
+    color: #ffffff !important;
+  }
+
+  :host ::ng-deep &.p-button:hover {
+    background: #5f42db;
+    border-color: #5f42db;
+    transform: translateY(-1px);
+    box-shadow: 0 14px 28px rgba(107, 76, 230, 0.22);
+  }
+
+  :host ::ng-deep &.p-button:active {
+    transform: translateY(0);
+  }
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 980px) {
+  .contact__grid {
+    grid-template-columns: 1fr;
+    gap: 26px;
+  }
+}
+
+@media (max-width: 700px) {
+  .contact {
+    padding: 64px 16px 84px;
+  }
+
+  .contact__subtitle {
+    font-size: 16px;
+  }
+
+  :host ::ng-deep .contactCard.p-card .p-card-body {
+    padding: 22px;
+  }
+
+  .contactFormCard {
+    :host ::ng-deep &.p-card .p-card-body {
+      padding: 24px;
+    }
+  }
 }

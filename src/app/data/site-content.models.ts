@@ -54,3 +54,24 @@ export interface TeamSectionContent {
   subtitle: string;
   members: TeamMember[];
 }
+
+export interface ContactInfoItem {
+  icon: string;
+  label: string;
+  value: string;
+}
+
+export interface ContactSectionContent {
+  title: string;
+  titleAccent?: string;
+  subtitle: string;
+
+  infoTitle: string;
+  infoItems: ContactInfoItem[];
+
+  whyTitle: string;
+  whyItems: string[];
+
+  formTitle: string;
+  formCtaLabel: string;
+}

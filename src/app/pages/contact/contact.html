@@ -1,4 +1,87 @@
-<section class="page">
-  <h1>Contact</h1>
-  <p>We’ll build the “Get in touch + form” section like your screenshot.</p>
+<section class="contact" id="contact">
+  <div class="contact__container">
+    <header class="contact__header">
+      <h2 class="contact__title">
+        <span>{{ contact.title }}</span>
+        @if (contact.titleAccent) {
+          <span class="contact__accent"> {{ contact.titleAccent }}</span>
+        }
+      </h2>
+      <p class="contact__subtitle">{{ contact.subtitle }}</p>
+    </header>
+
+    <div class="contact__grid">
+      <!-- LEFT COLUMN -->
+      <div class="contact__left">
+        <p-card class="contactCard contactCard--tight">
+          <h3 class="contactCard__title">{{ contact.infoTitle }}</h3>
+
+          <div class="contactInfo">
+            @for (item of contact.infoItems; track item.label) {
+              <div class="contactInfo__row">
+                <div class="contactInfo__icon">
+                  <i class="{{ item.icon }}"></i>
+                </div>
+
+                <div class="contactInfo__text">
+                  <div class="contactInfo__label">{{ item.label }}</div>
+                  <div class="contactInfo__value">{{ item.value }}</div>
+                </div>
+              </div>
+            }
+          </div>
+        </p-card>
+
+        <p-card class="contactCard contactCard--tight">
+          <h3 class="contactCard__title">{{ contact.whyTitle }}</h3>
+
+          <ul class="contactWhy__list">
+            @for (w of contact.whyItems; track w) {
+              <li>
+                <i class="pi pi-check"></i>
+                <span>{{ w }}</span>
+              </li>
+            }
+          </ul>
+        </p-card>
+      </div>
+
+      <!-- RIGHT COLUMN -->
+      <p-card class="contactCard contactFormCard">
+        <h3 class="contactCard__title">{{ contact.formTitle }}</h3>
+
+        <form class="contactForm" (ngSubmit)="submit()">
+          <div class="contactForm__field">
+            <input pInputText type="text" placeholder="Your Name *" required />
+          </div>
+
+          <div class="contactForm__field">
+            <input pInputText type="email" placeholder="Email Address *" required />
+          </div>
+
+          <div class="contactForm__field">
+            <input pInputText type="text" placeholder="Company Name (Optional)" />
+          </div>
+
+          <div class="contactForm__field">
+            <textarea
+              pTextarea
+              rows="7"
+              placeholder="Tell us about your project *"
+              required
+            ></textarea>
+          </div>
+
+          <button
+            pButton
+            type="submit"
+            class="contactForm__submit"
+            [label]="contact.formCtaLabel"
+            icon="pi pi-send"
+            iconPos="right"
+          ></button>
+        </form>
+      </p-card>
+    </div>
+  </div>
 </section>

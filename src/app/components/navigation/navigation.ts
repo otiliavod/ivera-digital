@@ -44,8 +44,32 @@ export class Navigation {
     }
   }
 
+  private scrollToId(id: string): void {
+    const el = document.getElementById(id);
+    if (!el) return;
+
+    // offset for fixed nav
+    const y = el.getBoundingClientRect().top + window.scrollY - 84;
+    window.scrollTo({ top: y, behavior: 'smooth' });
+  }
+
   async navigate(path: NavItem['path']): Promise<void> {
     this.mobileMenu?.hide();
+
+    // Scroll targets
+    if (path === 'contact' || path === 'projects' || path === 'team') {
+      // If not on home, go home first
+      if (this.router.url !== '/') {
+        await this.router.navigate(['/']);
+        // wait a tick for DOM to render
+        setTimeout(() => this.scrollToId(path), 0);
+        return;
+      }
+
+      this.scrollToId(path);
+      return;
+    }
+
     await this.router.navigate(path ? ['/', path] : ['/']);
   }
 

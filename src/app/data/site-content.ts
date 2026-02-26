@@ -1,4 +1,4 @@
-import { HeroContent, NavItem, ProjectsSectionContent, TeamSectionContent } from './site-content.models';
+import { HeroContent, NavItem, ProjectsSectionContent, TeamSectionContent, ContactSectionContent } from './site-content.models';
 
 export const NAV_ITEMS: NavItem[] = [
   { label: 'Home', path: '' },
@@ -73,4 +73,34 @@ export const TEAM_SECTION: TeamSectionContent = {
       linkedinUrl: 'https://www.linkedin.com/in/otilia-ivanoiu-18b57a18b/',
     },
   ],
+};
+
+export const CONTACT_SECTION: ContactSectionContent = {
+  title: "Let's Build",
+  titleAccent: 'Together',
+  subtitle: 'Ready to turn your idea into reality? Send a message and I’ll get back to you.',
+
+  infoTitle: 'Get in Touch',
+  infoItems: [
+    {
+      icon: 'pi pi-envelope',
+      label: 'Email',
+      value: 'iveradigital.co@gmail.com',
+    },
+    {
+      icon: 'pi pi-map-marker',
+      label: 'Location',
+      value: 'Romania',
+    },
+  ],
+
+  whyTitle: 'Why Choose Ivera?',
+  whyItems: [
+    'Modern Angular 21 + PrimeNG approach (standalone components, reusable UI)',
+    'Clean, content-driven architecture (easy to extend, maintain, and hand over)',
+    'Strong focus on UI polish, responsiveness, and performance',
+  ],
+
+  formTitle: 'Send a Message',
+  formCtaLabel: 'Send Message',
 };

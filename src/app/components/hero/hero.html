@@ -8,14 +8,14 @@
     </div>
 
     <h1 class="hero__title">
-  <span class="hero__line">
-    {{ hero.title }}
-  </span>
+      <span class="hero__line">
+        {{ hero.title }}
+      </span>
 
       <span class="hero__line">
-    <span class="hero__accent">{{ hero.titleAccent }}</span>
-    <span class="hero__rest"> That Matter</span>
-  </span>
+        <span class="hero__accent">{{ hero.titleAccent }}</span>
+        <span class="hero__rest"> That Matter</span>
+      </span>
     </h1>
 
     <p class="hero__subtitle">
@@ -23,23 +23,27 @@
     </p>
 
     <div class="hero__actions">
-      <a
+      <!-- PRIMARY: scroll to contact -->
+      <button
         pButton
+        type="button"
         class="hero__primary"
-        [routerLink]="['/', hero.primaryCtaTarget]"
-        label="{{ hero.primaryCtaLabel }}"
+        [label]="hero.primaryCtaLabel"
         icon="pi pi-arrow-right"
         iconPos="right"
-      ></a>
+        (click)="scrollTo('contact')"
+      ></button>
 
-      <a
+      <!-- SECONDARY: scroll to projects -->
+      <button
         pButton
+        type="button"
         class="hero__secondary"
-        [routerLink]="['/', hero.secondaryCtaTarget]"
-        label="{{ hero.secondaryCtaLabel }}"
+        [label]="hero.secondaryCtaLabel"
         severity="secondary"
         outlined="true"
-      ></a>
+        (click)="scrollTo('projects')"
+      ></button>
     </div>
   </div>
 </section>
