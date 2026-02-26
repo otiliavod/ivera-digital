@@ -1,32 +1,21 @@
-# IveraDigital
+# Ivera Digital — Presentation Website
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.1.4.
+Modern portfolio / presentation website for Ivera Digital, built with Angular 21 and PrimeNG 21.
 
-## Development server
+### The project focuses on:
+- Clean UI architecture
+- Reusable components
+- Modern Angular patterns
+- Single-page smooth scrolling experience
 
-To start a local development server, run:
+## Tech Stack
 
-```bash
-ng serve
-```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
+### Frontend
+- Angular 21
+- PrimeNG 21
+- SCSS
+- Angular Router
+- Angular FormsModule
 
 To build the project run:
 
