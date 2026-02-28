@@ -50,36 +50,71 @@
       <p-card class="contactCard contactFormCard">
         <h3 class="contactCard__title">{{ contact.formTitle }}</h3>
 
-        <form class="contactForm" (ngSubmit)="submit()">
+        <form class="contactForm" (ngSubmit)="submit()" #f="ngForm">
           <div class="contactForm__field">
-            <input pInputText type="text" placeholder="Your Name *" required />
-          </div>
-
-          <div class="contactForm__field">
-            <input pInputText type="email" placeholder="Email Address *" required />
-          </div>
-
-          <div class="contactForm__field">
-            <input pInputText type="text" placeholder="Company Name (Optional)" />
-          </div>
-
-          <div class="contactForm__field">
-            <textarea
-              pTextarea
-              rows="7"
-              placeholder="Tell us about your project *"
+            <input
+              pInputText
+              type="text"
+              name="name"
+              [(ngModel)]="model.name"
+              placeholder="Your Name *"
               required
-            ></textarea>
+            />
+          </div>
+
+          <div class="contactForm__field">
+            <input
+              pInputText
+              type="email"
+              name="email"
+              [(ngModel)]="model.email"
+              placeholder="Email Address *"
+              required
+            />
+          </div>
+
+          <div class="contactForm__field">
+            <input
+              pInputText
+              type="text"
+              name="company"
+              [(ngModel)]="model.company"
+              placeholder="Company Name (Optional)"
+            />
+          </div>
+
+          <div class="contactForm__field">
+    <textarea
+      pTextarea
+      rows="7"
+      name="message"
+      [(ngModel)]="model.message"
+      placeholder="Tell us about your project *"
+      required
+    ></textarea>
           </div>
 
           <button
             pButton
             type="submit"
             class="contactForm__submit"
-            [label]="contact.formCtaLabel"
+            [label]="sending ? 'Sending...' : contact.formCtaLabel"
             icon="pi pi-send"
             iconPos="right"
+            [disabled]="sending || f.invalid"
           ></button>
+
+          @if (status === 'success') {
+            <p class="contactForm__status contactForm__status--success">
+              Thanks! Your message was sent.
+            </p>
+          }
+
+          @if (status === 'error') {
+            <p class="contactForm__status contactForm__status--error">
+              Sorry — something went wrong. Please try again.
+            </p>
+          }
         </form>
       </p-card>
     </div>
