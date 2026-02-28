@@ -152,6 +152,11 @@
   box-shadow: 0 14px 30px rgba(125, 83, 233, 0.28);
 }
 
+.nav__cta.is-active {
+  box-shadow: 0 14px 30px rgba(125, 83, 233, 0.28);
+  transform: translateY(-1px);
+}
+
 /* menu button */
 .nav__menuBtn {
   display: none;

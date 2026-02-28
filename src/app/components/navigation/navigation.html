@@ -1,6 +1,6 @@
 <header class="nav" [class.is-scrolled]="scrolled">
   <div class="nav__container">
-    <a class="nav__brand" routerLink="/">
+    <a class="nav__brand" href="" (click)="onDesktopNavClick($event, '')">
       <img class="nav__logoDesktop" [src]="logoWordmarkPath" alt="Ivera Digital" />
       <img class="nav__logoMobile" [src]="logoMarkPath" alt="Ivera Digital" />
     </a>
@@ -9,9 +9,9 @@
       @for (item of navItems; track item.path) {
         <a
           class="nav__link"
-          [routerLink]="item.path ? ['/', item.path] : ['/']"
-          routerLinkActive="is-active"
-          [routerLinkActiveOptions]="{ exact: item.path === '' }"
+          href=""
+          [class.is-active]="activeSection === item.path"
+          (click)="onDesktopNavClick($event, item.path)"
         >
           {{ item.label }}
         </a>
@@ -19,10 +19,13 @@
     </nav>
 
     <div class="nav__actions">
+      <!-- Get Started now behaves like Contact nav item -->
       <a
         pButton
         class="nav__cta"
-        [routerLink]="['/contact']"
+        href=""
+        [class.is-active]="activeSection === 'contact'"
+        (click)="onDesktopNavClick($event, 'contact')"
       >
         Get Started
       </a>
@@ -50,7 +53,11 @@
 
       <div class="navPopover__divider"></div>
 
-      <button type="button" class="navPopover__primary" (click)="navigate('contact')">
+      <button
+        type="button"
+        class="navPopover__primary"
+        (click)="navigate('contact')"
+      >
         Get Started
         <i class="pi pi-arrow-right"></i>
       </button>
