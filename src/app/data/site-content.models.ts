@@ -75,3 +75,35 @@ export interface ContactSectionContent {
   formTitle: string;
   formCtaLabel: string;
 }
+
+export interface FooterLink {
+  label: string;
+  href?: string;      // external
+  route?: RoutePath;  // internal
+}
+
+export interface FooterColumn {
+  title: string;
+  links: FooterLink[];
+}
+
+export interface FooterContent {
+  brandName: string;
+  brandLogoPath: string;
+  tagline: string;
+
+  social: {
+    githubUrl: string;
+    linkedinUrl: string;
+  };
+
+  services: FooterColumn;
+  company: FooterColumn;
+  contact: {
+    title: string;
+    email: string;
+    location: string;
+  };
+
+  copyright: string;
+}

@@ -1,4 +1,4 @@
-import { HeroContent, NavItem, ProjectsSectionContent, TeamSectionContent, ContactSectionContent } from './site-content.models';
+import { HeroContent, NavItem, ProjectsSectionContent, TeamSectionContent, ContactSectionContent, FooterContent } from './site-content.models';
 
 export const NAV_ITEMS: NavItem[] = [
   { label: 'Home', path: '' },
@@ -103,4 +103,40 @@ export const CONTACT_SECTION: ContactSectionContent = {
 
   formTitle: 'Send a Message',
   formCtaLabel: 'Send Message',
+};
+
+export const FOOTER_CONTENT: FooterContent = {
+  brandName: 'Ivera Digital',
+  brandLogoPath: 'assets/brand/ivera_logo_2_asset.png',
+  tagline: 'Creating exceptional web experiences for modern businesses.',
+
+  social: {
+    githubUrl: 'https://github.com/otiliavod',
+    linkedinUrl: 'https://www.linkedin.com/in/otilia-ivanoiu-18b57a18b/',
+  },
+
+  services: {
+    title: 'Services',
+    links: [
+      { label: 'Web Development' },
+      { label: 'UI/UX Design' },
+      { label: 'E-Commerce' },
+      { label: 'Consulting' },
+    ],
+  },
+
+  company: {
+    title: 'Company',
+    links: [
+      { label: 'About Us', route: 'team' },
+    ],
+  },
+
+  contact: {
+    title: 'Contact',
+    email: 'iveradigital.co@gmail.com',
+    location: 'Romania',
+  },
+
+  copyright: `© ${new Date().getFullYear()} Ivera Digital. All rights reserved.`,
 };

@@ -53,6 +53,10 @@
   }
 }
 
+:host ::ng-deep .projectCard__btn.p-button .p-button-icon-right {
+  margin-left: 8px;
+}
+
 .projectCard__media {
   aspect-ratio: 16 / 9;
   background: #f3f4f8;

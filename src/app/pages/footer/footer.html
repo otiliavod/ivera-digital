@@ -1,0 +1,99 @@
+<footer class="footer">
+  <div class="footer__container">
+    <div class="footer__grid">
+      <!-- Brand -->
+      <div class="footerBrand">
+        <div class="footerBrand__top">
+          <img
+            class="footerBrand__logo"
+            [src]="footer.brandLogoPath"
+            [alt]="footer.brandName"
+          />
+        </div>
+
+        <p class="footerBrand__tagline">{{ footer.tagline }}</p>
+
+        <div class="footerSocial">
+          <a
+            class="footerSocial__icon"
+            [href]="footer.social.githubUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub"
+            title="GitHub"
+          >
+            <i class="pi pi-github"></i>
+          </a>
+
+          <a
+            class="footerSocial__icon"
+            [href]="footer.social.linkedinUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+            title="LinkedIn"
+          >
+            <i class="pi pi-linkedin"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Services -->
+      <div class="footerCol">
+        <h4 class="footerCol__title">{{ footer.services.title }}</h4>
+        <ul class="footerCol__list">
+          @for (link of footer.services.links; track link.label) {
+            <li class="footerCol__item">
+              <span class="footerCol__text">{{ link.label }}</span>
+            </li>
+          }
+        </ul>
+      </div>
+
+      <!-- Company -->
+      <div class="footerCol">
+        <h4 class="footerCol__title">{{ footer.company.title }}</h4>
+        <ul class="footerCol__list">
+          @for (link of footer.company.links; track link.label) {
+            <li class="footerCol__item">
+              @if (link.route) {
+                <a class="footerCol__link" [routerLink]="['/', link.route]">
+                  {{ link.label }}
+                </a>
+              } @else if (link.href) {
+                <a class="footerCol__link" [href]="link.href" target="_blank" rel="noopener noreferrer">
+                  {{ link.label }}
+                </a>
+              } @else {
+                <span class="footerCol__text">{{ link.label }}</span>
+              }
+            </li>
+          }
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div class="footerCol">
+        <h4 class="footerCol__title">{{ footer.contact.title }}</h4>
+        <ul class="footerCol__list">
+          <li class="footerCol__item">
+            <a class="footerCol__link" [href]="'mailto:' + footer.contact.email">
+              {{ footer.contact.email }}
+            </a>
+          </li>
+          <li class="footerCol__item">
+            <span class="footerCol__text">{{ footer.contact.location }}</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer__divider"></div>
+
+    <div class="footer__bottom">
+      <span class="footer__copyright">
+        {{ footer.copyright }}
+      </span>
+    </div>
+  </div>
+</footer>
