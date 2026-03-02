@@ -18,7 +18,13 @@ export class Team {
   private readonly content = inject(SiteContentService);
   team = this.content.getTeamSection();
 
+  cvPath = 'assets/cv-otilia-ivanoiu.pdf';
+
   open(url: string): void {
     window.open(url, '_blank', 'noopener,noreferrer');
+  }
+
+  downloadCv(): void {
+    this.open(this.cvPath);
   }
 }
