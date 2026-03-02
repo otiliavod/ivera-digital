@@ -290,35 +290,10 @@
   :host ::ng-deep &.p-button:active {
     transform: translateY(0);
   }
-
-  .contactForm__status {
-    margin: 12px 2px 0;
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 0.01em;
-  }
-
-  .contactForm__status--success::before {
-    content: "✓ ";
-    font-weight: 900;
-  }
-
-  .contactForm__status--error::before {
-    content: "✕ ";
-    font-weight: 900;
-  }
-
-  .contactForm__status--success {
-    color: #15803d;
-  }
-
-  .contactForm__status--error {
-    color: #b91c1c;
-  }
 }
 
 /* =========================
-   STATUS ANIMATION
+   STATUS (animated + colored)
 ========================= */
 
 .contactForm__status {
@@ -330,6 +305,24 @@
   opacity: 0;
   transform: translateY(6px);
   animation: statusFadeIn 500ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.contactForm__status--success {
+  color: #15803d; /* green */
+}
+
+.contactForm__status--error {
+  color: #b91c1c; /* red */
+}
+
+.contactForm__status--success::before {
+  content: "✓ ";
+  font-weight: 900;
+}
+
+.contactForm__status--error::before {
+  content: "✕ ";
+  font-weight: 900;
 }
 
 @keyframes statusFadeIn {
