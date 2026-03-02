@@ -183,6 +183,22 @@
   width: 100%;
 }
 
+/* =========================
+   AUTOFILL FIX (Chrome)
+========================= */
+
+:host ::ng-deep .contactForm input.p-inputtext:-webkit-autofill,
+:host ::ng-deep .contactForm input.p-inputtext:-webkit-autofill:hover,
+:host ::ng-deep .contactForm input.p-inputtext:-webkit-autofill:focus,
+:host ::ng-deep .contactForm textarea:-webkit-autofill,
+:host ::ng-deep .contactForm textarea:-webkit-autofill:hover,
+:host ::ng-deep .contactForm textarea:-webkit-autofill:focus {
+  -webkit-text-fill-color: #111827;
+  -webkit-box-shadow: 0 0 0 1000px rgba(248, 250, 252, 1) inset;
+  transition: background-color 9999s ease-in-out 0s;
+  caret-color: #111827;
+}
+
 /* Inputs + textarea base */
 :host ::ng-deep .contactForm .p-inputtext,
 :host ::ng-deep .contactForm textarea.p-inputtextarea,
@@ -276,16 +292,50 @@
   }
 
   .contactForm__status {
-    margin: 8px 0 0;
+    margin: 12px 2px 0;
     font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+  }
+
+  .contactForm__status--success::before {
+    content: "✓ ";
+    font-weight: 900;
+  }
+
+  .contactForm__status--error::before {
+    content: "✕ ";
+    font-weight: 900;
   }
 
   .contactForm__status--success {
-    color: rgba(16, 185, 129, 0.95);
+    color: #15803d;
   }
 
   .contactForm__status--error {
-    color: rgba(239, 68, 68, 0.95);
+    color: #b91c1c;
+  }
+}
+
+/* =========================
+   STATUS ANIMATION
+========================= */
+
+.contactForm__status {
+  margin: 14px 4px 0;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+
+  opacity: 0;
+  transform: translateY(6px);
+  animation: statusFadeIn 500ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes statusFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
