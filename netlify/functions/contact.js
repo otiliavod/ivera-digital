@@ -36,17 +36,20 @@ exports.handler = async (event) => {
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
       port: Number(process.env.SMTP_PORT || 587),
-      secure: String(process.env.SMTP_SECURE || "false") === "true", // true for 465
+      secure: String(process.env.SMTP_SECURE || "false") === "true",
       auth: {
         user: process.env.SMTP_USER,
         pass: process.env.SMTP_PASS,
       },
+      connectionTimeout: 10_000,
+      greetingTimeout: 10_000,
+      socketTimeout: 15_000,
     });
 
     const to = process.env.CONTACT_TO;
     const from = process.env.CONTACT_FROM || process.env.SMTP_USER;
 
-    await transporter.sendMail({
+    const sendPromise = transporter.sendMail({
       from,
       to,
       replyTo: email,
@@ -57,6 +60,13 @@ exports.handler = async (event) => {
         `Company: ${company || "-"}\n\n` +
         `Message:\n${message}\n`,
     });
+
+    await Promise.race([
+      sendPromise,
+      new Promise((_, reject) =>
+        setTimeout(() => reject(new Error("Email send timeout")), 15_000)
+      ),
+    ]);
 
     return {
       statusCode: 200,

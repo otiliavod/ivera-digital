@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { firstValueFrom } from 'rxjs';
+import { firstValueFrom, catchError, of, timeout } from 'rxjs';
 
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
@@ -55,7 +55,11 @@ export class Contact {
       // Netlify Functions endpoint
       const url = '/.netlify/functions/contact';
 
-      await firstValueFrom(this.http.post(url, this.model));
+      await firstValueFrom(
+        this.http.post(url, this.model).pipe(
+          timeout(15000)
+        )
+      );
 
       this.status = 'success';
       this.model = { name: '', email: '', company: '', message: '' };
