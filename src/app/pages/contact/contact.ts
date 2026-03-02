@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
@@ -32,6 +32,7 @@ type Status = 'idle' | 'success' | 'error';
 export class Contact {
   private readonly content = inject(SiteContentService);
   private readonly http = inject(HttpClient);
+  private readonly cdr = inject(ChangeDetectorRef);
 
   contact = this.content.getContactSection();
 
@@ -50,23 +51,29 @@ export class Contact {
 
     this.sending = true;
     this.status = 'idle';
+    this.cdr.markForCheck();
 
     try {
-      // Netlify Functions endpoint
       const url = '/.netlify/functions/contact';
 
       await firstValueFrom(
-        this.http.post(url, this.model).pipe(
-          timeout(15000)
-        )
+        this.http
+          .post(
+            url,
+            this.model,
+            { headers: { 'Content-Type': 'application/json' } }
+          )
+          .pipe(timeout(15000))
       );
 
       this.status = 'success';
       this.model = { name: '', email: '', company: '', message: '' };
+
     } catch {
       this.status = 'error';
     } finally {
       this.sending = false;
+      this.cdr.markForCheck();
     }
   }
 }

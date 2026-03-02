@@ -98,11 +98,14 @@
             pButton
             type="submit"
             class="contactForm__submit"
-            [label]="sending ? 'Sending...' : contact.formCtaLabel"
             icon="pi pi-send"
             iconPos="right"
             [disabled]="sending || f.invalid"
-          ></button>
+          >
+  <span pButtonLabel>
+    {{ sending ? 'Sending...' : contact.formCtaLabel }}
+  </span>
+          </button>
 
           @if (status === 'success') {
             <p class="contactForm__status contactForm__status--success">
