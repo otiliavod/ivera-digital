@@ -2,6 +2,8 @@
 
 Modern portfolio / presentation website for Ivera Digital, built with Angular 21 and PrimeNG 21.
 
+Live server: https://ivera-digital.netlify.app/
+
 ### The project focuses on:
 - Clean UI architecture
 - Reusable components
